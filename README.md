@@ -1,8 +1,11 @@
 math.relativechange.js
 ======================
 
-Math object extension for calculating relative changes
-
+Math object extension for calculating relative quantity changes, such as:
+```
+70 => 140 = +100%
+140 => 70 = -50%
+```
 ### Demo
 [Click here for a demo](http://albertboada.github.io/math.relativechange.js/demo)
 
