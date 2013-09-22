@@ -53,7 +53,7 @@
                             final   = parseFloat($final_input.val()),
                             result;
 
-                        if (!initial || !final) {
+                        if (isNaN(initial) || isNaN(final)) {
                             $result_input.val("").hide();
                             return;
                         }
