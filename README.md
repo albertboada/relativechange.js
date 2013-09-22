@@ -4,7 +4,7 @@ math.relativechange.js
 Math object extension for calculating relative changes
 
 ### Demo
-[Click here for the demo](http://albertboada.github.io/math.relativechange.js/demo)
+[Click here for a demo](http://albertboada.github.io/math.relativechange.js/demo)
 
 ### Usage
 ```js
