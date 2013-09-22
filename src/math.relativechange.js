@@ -1,6 +1,6 @@
 /**
  * Extends the Javascript Math object by adding a method for calculating
- * relative changes
+ * relative quantity changes.
  *
  * @author  Albert Boada Flaquer < albert.boada.flaquer at gmail dot com >
  * @version 1.0.0

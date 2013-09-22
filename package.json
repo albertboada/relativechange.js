@@ -1,6 +1,6 @@
 {
   "name": "math.relativechange",
-  "description": "Math object extension for calculating relative changes",
+  "description": "Math object extension for calculating relative quantity changes",
   "version": "1.0.0",
   "author": {
     "name": "Albert Boada Flaquer",
