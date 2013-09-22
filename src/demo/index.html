@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>math.relativechange.js Demo</title>
+        <meta name="description" content="Math object extension for calculating relative changes">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+        <!--(if target dev)><!-->
+        <script src="../math.relativechange.js"></script>
+        <!--<!(endif)-->
+        <!--(if target dist)>
+        <script src="../math.relativechange.min.js"></script>
+        <!(endif)-->
+    </head>
+    <body>
+        <div class="container">
+            <h1>math.relativechange.js</h1>
+            <form>
+                <div class="form-group">
+                    <label class="sr-only">Initial value</label>
+                    <input type="number" placeholder="Initial value" class="form-control" data-relativechange-initial></input>
+                </div>
+                <div class="form-group">
+                    <label class="sr-only">Final value</label>
+                    <input type="number" placeholder="Final value" class="form-control" data-relativechange-final></input>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block">Calculate!</button>
+                </div>
+                <div class="form-group">
+                    <label class="sr-only">Relative change</label>
+                    <input type="text" class="form-control" readonly data-relativechange-result></input>
+                </div>
+            </form>
+        </div>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>
+            (function ($) {
+                $(function() {
+                    var $initial_input = $("[data-relativechange-initial]"),
+                        $final_input   = $("[data-relativechange-final]"),
+                        $result_input  = $("[data-relativechange-result]"),
+                        $form          = $("form");
+
+                    $result_input.hide();
+
+                    $form.on("submit", function () {
+                        calculateRelativeChange();
+                        return false;
+                    });
+
+                    function calculateRelativeChange()
+                    {
+                        var initial = parseFloat($initial_input.val()),
+                            final   = parseFloat($final_input.val()),
+                            result;
+
+                        if (!initial || !final) {
+                            $result_input.val("").hide();
+                            return;
+                        }
+
+                        // Here comes the sun!!
+                        result = Math.relativechange(initial, final);
+
+                        if (result > 0) { result = "+"+result; }
+                        result = result+"%";
+
+                        $result_input.val(result).show();
+                    }
+                });
+            }(window.jQuery));
+        </script>
+    </body>
+</html>

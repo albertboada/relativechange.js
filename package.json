@@ -1,0 +1,22 @@
+{
+  "name": "math.relativechange",
+  "description": "Math object extension for calculating relative changes",
+  "version": "1.0.0",
+  "author": {
+    "name": "Albert Boada Flaquer",
+    "email": "albert.boada.flaquer at gmail dot com",
+    "url": "http://github.com/albertboada"
+  },
+  "licence": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-uglify": "~0.2.4",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-targethtml": "~0.2.4",
+    "npm": "~1.3.11",
+    "install": "~0.1.7",
+    "grunt-contrib-concat": "~0.3.0"
+  }
+}
