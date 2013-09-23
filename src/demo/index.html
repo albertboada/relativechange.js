@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title>math.relativechange.js Demo</title>
         <meta name="description" content="Math object extension for calculating relative changes">
-        <meta name="viewport" content="width=device-width">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
         <style>body{word-wrap:break-word;}</style>
     </head>
@@ -23,7 +23,7 @@
                 <div class="form-group">
                     <button class="btn btn-primary btn-block">Do the math!</button>
                 </div>
-                <div class="form-group">
+                <div class="form-group has-success">
                     <label class="sr-only">Relative change</label>
                     <input type="text" class="form-control" readonly data-relativechange-result></input>
                 </div>
@@ -46,9 +46,9 @@
 
                     $result_input.hide();
 
-                    $form.on("submit", function () {
+                    $form.on("submit", function (e) {
+                        e.preventDefault();
                         calculateRelativeChange();
-                        return false;
                     });
 
                     function calculateRelativeChange()
@@ -69,6 +69,8 @@
                         result = result+"%";
 
                         $result_input.val(result).show();
+
+                        $form.find(":input").blur();
                     }
                 });
             }(window.jQuery));
