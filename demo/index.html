@@ -60,7 +60,8 @@
                         }
 
                         // Here comes the sun!!
-                        result = Math.relativechange(initial, final);
+                        result = Math.relativechange(initial, final, "all");
+                        result = result["percent"];
 
                         if (result > 0) { result = "+"+result; }
                         result = result+"%";
