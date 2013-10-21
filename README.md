@@ -29,6 +29,7 @@ All constructors return instance of `RelativeChange.Raw`
 - `fromRaw(/*Number */relchange)`
 - `fromPercentage(/*Number */percentage)`
 - `fromMultiplier(/*Number */multiplier)`
+
 #### `RelativeChange.Raw` instance methods
 - `val()` @returns instance of `Number`
 - `percentage()` @returns instance of `RelativeChange.Percentage`
@@ -41,6 +42,7 @@ All constructors return instance of `RelativeChange.Percentage`
 - `fromRaw(/*Number */relchange)`
 - `fromPercentage(/*Number */percentage)`
 - `fromMultiplier(/*Number */multiplier)`
+
 #### `RelativeChange.Percentage` instance methods
 - `val()` @returns instance of `Number`
 - `raw()` @returns instance of `RelativeChange.Raw`
@@ -53,6 +55,7 @@ All constructors return instance of `RelativeChange.Multiplier`
 - `fromRaw(/*Number */relchange)`
 - `fromPercentage(/*Number */percentage)`
 - `fromMultiplier(/*Number */multiplier)`
+
 #### `RelativeChange.Multiplier` instance methods
 - `val()` @returns instance of `Number`
 - `raw()` @returns instance of `RelativeChange.Raw`
