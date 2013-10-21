@@ -1,0 +1,9 @@
+/**
+ * @module RelativeChange
+ * Wrapper module which publishes our lib classes to the global scope.
+ */
+window.RelativeChange = {
+    Raw:        RawRelativeChange,
+    Percentage: PercentageRelativeChange,
+    Multiplier: MultiplierRelativeChange
+};

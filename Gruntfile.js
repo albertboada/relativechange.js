@@ -12,6 +12,7 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
         meta: {
           banner: '/* <%= pkg.name %>.js' +
+            ' <%= pkg.version %>' +
             ' (<%= pkg.author.url %>) \n' +
             ' * Copyright (c) <%= grunt.template.today("yyyy") %>' +
             ' <%= pkg.author.name %> < <%= pkg.author.email %> >\n' +
@@ -41,7 +42,12 @@ module.exports = function (grunt) {
             },
             dist: {
                 src: [
-                    '<%= paths.src %>/<%= pkg.name %>.js'
+                    '<%= paths.src %>/relchange.prefix',
+                    '<%= paths.src %>/raw.js',
+                    '<%= paths.src %>/percentage.js',
+                    '<%= paths.src %>/multiplier.js',
+                    '<%= paths.src %>/relchange.module',
+                    '<%= paths.src %>/relchange.suffix'
                 ],
                 dest: '<%= paths.dist %>/<%= pkg.name %>.js',
             }
@@ -52,10 +58,27 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: {
-                    "<%= paths.dist %>/math.relativechange.min.js": [
-                        "<%= paths.src %>/<%= pkg.name %>.js"
+                    "<%= paths.dist %>/relativechange.min.js": [
+                        "<%= paths.dist %>/<%= pkg.name %>.js"
                     ]
                 }
+            }
+        },
+        watch: {
+            files: ["src/**/*", "test/**/*"],
+            tasks: ["build", "karma:background:run"]
+        },
+        karma: {
+            options: {
+                configFile: 'karma.conf.js'
+            },
+            unit: {
+                singleRun: true
+            },
+            background: {
+                background: true,
+                autoWatch:  false
+                //browsers: [ grunt.option('browser') || 'PhantomJS' ]
             }
         }
     });
@@ -63,16 +86,25 @@ module.exports = function (grunt) {
     grunt.registerTask('build', [
         'clean:dist',
         'concat',
-        'uglify',
-        'targethtml'
+        'uglify'
+        //'targethtml'
     ]);
 
     grunt.registerTask('default', [
-        'build'
+        'build',
+        'karma:unit'
+    ]);
+
+    grunt.registerTask('dev', 'Run dev server and watch for changes', [
+        'default',
+        'karma:background',
+        'watch'
     ]);
 
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-targethtml');
+    //grunt.loadNpmTasks('grunt-targethtml');
+    grunt.loadNpmTasks('grunt-karma');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 };

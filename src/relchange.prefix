@@ -1,0 +1,46 @@
+/**
+ * @lib     RelativeChange
+ *
+ * @version 1.0.0
+ * @link    https://github.com/albertboada/relativechange.js
+ * @author  Albert Boada Flaquer < albert.boada.flaquer at gmail dot com >
+ * @license MIT
+ *
+ * This library aims to solve relative quantity change calculations and its
+ * conversions to all its possible forms (raw, percentage and multiplier).
+ *
+ * A relative change tells how big is the alteration we have to apply to
+ * an "initial" quantity, relative to itself, in order to transform it into a
+ * "final" quantity.
+ *
+ * In other words, if we apply the relative change to the "initial" quantity,
+ * and add the resulting quantity to the "initial" quantity, we get the "final"
+ * quantity.
+ *
+ * final = initial + (initial * relativechange) = initial * change_multiplier
+ *
+ * relativechange = (final - initial) / initial
+ * [or relativechange = (final / initial) - 1]
+ * change_percentage = relativechange * 100
+ * change_multiplier = 1 + relativechange
+ *
+ * Example 1 (positive change):
+ * <example>
+ * initial = 70, final = 140
+ * relativechange = (140 - 70) / 70 = 1
+ * change_percentage = 1 * 100 = +100%
+ * change_multiplier = 1 + 1 = 2
+ * check: final = 70 + (70 * 1) = 70 * 2 = 140   :)
+ * </example>
+ *
+ * Example 2 (negative change):
+ * <example>
+ * initial = 140, final = 70
+ * relativechange = (70 - 140) / 140 = -0.5
+ * change_percentage = -0.5 * 100 = -50%
+ * change_multiplier = 1 + -0.5 = 0.5
+ * check: final = 140 + (140 * -0.5) = 140 * 0.5 = 70   :)
+ * </example>
+ */
+
+(function (window) {

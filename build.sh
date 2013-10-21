@@ -4,5 +4,6 @@ GHPAGES="../gh-pages"
 grunt
 rm -fr ${GHPAGES}/*
 mkdir ${GHPAGES}/demo
-cp -vr dist/demo/* ${GHPAGES}/demo/
-cp -v dist/math.relativechange.min.js ${GHPAGES}/
+mkdir ${GHPAGES}/dist
+cp -vr demo/* ${GHPAGES}/demo/
+cp -v dist/relativechange.min.js ${GHPAGES}/dist/
