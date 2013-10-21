@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>math.relativechange.js Demo</title>
+        <title>RelativeChange.js Demo</title>
         <meta name="description" content="Math object extension for calculating relative changes">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
@@ -10,38 +10,46 @@
     </head>
     <body>
         <div class="container">
-            <h1>math.relativechange.js</h1>
+            <h1>RelativeChange.js</h1>
             <form>
                 <div class="form-group">
                     <label class="sr-only">Initial value</label>
-                    <input type="number" step="any" placeholder="Initial value" class="form-control" data-relativechange-initial></input>
+                    <input type="number" step="any" placeholder="Initial value" class="form-control" data-relativechange-initial value="200" />
                 </div>
                 <div class="form-group">
                     <label class="sr-only">Final value</label>
-                    <input type="number" step="any" placeholder="Final value" class="form-control" data-relativechange-final></input>
+                    <input type="number" step="any" placeholder="Final value" class="form-control" data-relativechange-final value="600" />
                 </div>
                 <div class="form-group">
                     <button class="btn btn-primary btn-block">Do the math!</button>
                 </div>
-                <div class="form-group has-success">
-                    <label class="sr-only">Relative change</label>
-                    <input type="text" class="form-control" readonly data-relativechange-result></input>
+                <div class="form-group">
+                    <label class="sr-only">Raw relative change</label>
+                    <input type="text" class="form-control" readonly data-relativechange-raw data-relativechange-result></input>
+                </div>
+                <div class="form-group">
+                    <label class="sr-only">Relative change percentage</label>
+                    <input type="text" class="form-control" readonly data-relativechange-percentage data-relativechange-result></input>
+                </div>
+                <div class="form-group">
+                    <label class="sr-only">Relative change multiplier</label>
+                    <input type="text" class="form-control" readonly data-relativechange-multiplier data-relativechange-result></input>
                 </div>
             </form>
         </div>
-        
-        <script src="../math.relativechange.min.js"></script>
-        
+        <script src="../dist/relativechange.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>
             (function ($) {
                 $(function() {
-                    var $initial_input = $("[data-relativechange-initial]"),
-                        $final_input   = $("[data-relativechange-final]"),
-                        $result_input  = $("[data-relativechange-result]"),
-                        $form          = $("form");
+                    var $initial_input       = $("[data-relativechange-initial]"),
+                        $final_input         = $("[data-relativechange-final]"),
+                        $result_raw_input    = $("[data-relativechange-raw]"),
+                        $result_pctg_input   = $("[data-relativechange-percentage]"),
+                        $result_mltplr_input = $("[data-relativechange-multiplier]"),
+                        $form                = $("form");
 
-                    $result_input.hide();
+                    $("[data-relativechange-result]").hide();
 
                     $form.on("submit", function (e) {
                         e.preventDefault();
@@ -52,23 +60,36 @@
                     {
                         var initial = parseFloat($initial_input.val()),
                             final   = parseFloat($final_input.val()),
-                            result;
+                            change,
+                            raw,
+                            percentage,
+                            mutiplier;
 
                         if (isNaN(initial) || isNaN(final)) {
-                            $result_input.val("").hide();
+                            $("[data-relativechange-result]").val("").hide();
                             return;
                         }
 
                         // Here comes the sun!!
-                        result = Math.relativechange(initial, final, "all");
-                        result = result["percent"];
+                        change     = RelativeChange.Raw.calculate(initial, final);
+                        raw        = change.val();
+                        percentage = change.percentage().val();
+                        multiplier = change.multiplier().val();
 
-                        if (result > 0) { result = "+"+result; }
-                        result = result+"%";
+                        // Decorate
+                        if (percentage > 0) { percentage = "+"+percentage; }
+                        percentage = percentage+"%";
+                        multiplier = "x"+multiplier;
 
-                        $result_input.val(result).show();
+                        $result_raw_input.val(raw);
+                        $result_pctg_input.val(percentage);
+                        $result_mltplr_input.val(multiplier);
 
-                        $form.find(":input").blur();
+                        $("[data-relativechange-result]").show();
+
+                        if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                            $form.find(":input").blur();
+                        }
                     }
                 });
             }(window.jQuery));
