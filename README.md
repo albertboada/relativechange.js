@@ -1,4 +1,4 @@
-relativechange.js
+RelativeChange.js
 ======================
 
 Javascript library for calculating relative quantity changes, such as:
