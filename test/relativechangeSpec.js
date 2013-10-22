@@ -15,7 +15,10 @@ describe("relativechange.js lib", function () {
     }
 
     describe("RawRelativeChange:", function () {
-        it("should exist in global scope", function () {
+        it("should not exist in global scope", function () {
+            expect(window.RawRelativeChange).toBeUndefined();
+        });
+        it("should exist in RelativeChange scope", function () {
             expect(RelativeChange.Raw).toBeDefined();
         });
         it("initial & final values -> RelativeChange", function () {
@@ -51,7 +54,10 @@ describe("relativechange.js lib", function () {
     });
 
     describe("PercentageRelativeChange:", function () {
-        it("should exist in global scope", function () {
+        it("should not exist in global scope", function () {
+            expect(window.PercentageRelativeChange).toBeUndefined();
+        });
+        it("should exist in RelativeChange scope", function () {
             expect(RelativeChange.Percentage).toBeDefined();
         });
         it("initial & final values -> RelativeChangePercentage", function () {
@@ -86,7 +92,10 @@ describe("relativechange.js lib", function () {
     });
 
     describe("MultiplierRelativeChange:", function () {
-        it("should exist in global scope", function () {
+        it("should not exist in global scope", function () {
+            expect(window.MultiplierRelativeChange).toBeUndefined();
+        });
+        it("should exist in RelativeChange scope", function () {
             expect(RelativeChange.Multiplier).toBeDefined();
         });
         it("initial & final values -> RelativeChangeMultiplier", function () {
