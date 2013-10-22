@@ -16,9 +16,9 @@ var relchange = relchange_instance.val(); // 3
 
 // Feeling like some convertions
 var relchangepercentage_instance = relchange_instance.percentage();
-var relchangepercentage = relchangepercentage_instance.val(); // +300%
+var relchangepercentage = relchangepercentage_instance.val(); // 300 (+300%)
 var relchangemultiplier_instance = relchange_instance.multiplier();
-var relchange_multiplier = relchangemultiplier_instance.val(); // x4
+var relchange_multiplier = relchangemultiplier_instance.val(); // 4 (x4)
 ```
 
 ### API
