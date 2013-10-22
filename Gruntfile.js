@@ -73,9 +73,11 @@ module.exports = function (grunt) {
                 configFile: 'karma.conf.js'
             },
             unit: {
+                port: 9876,
                 singleRun: true
             },
             background: {
+                port: 9877,
                 background: true,
                 autoWatch:  false
                 //browsers: [ grunt.option('browser') || 'PhantomJS' ]
