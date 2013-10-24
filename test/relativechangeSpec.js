@@ -21,32 +21,32 @@ describe("relativechange.js lib", function () {
         it("should exist in RelativeChange scope", function () {
             expect(RelativeChange.Raw).toBeDefined();
         });
-        it("initial & final values -> RelativeChange", function () {
+        it("initial & final values -> RelativeChange.Raw", function () {
             _testloop(function (t) {
                 expect(RelativeChange.Raw.calculate(t.ini, t.fin).val()).toEqual(t.chng);
             });
         });
-        it("raw change value -> RelativeChange", function () {
+        it("raw change value -> RelativeChange.Raw", function () {
             var change = tests_data[0].change;
             console.log(RelativeChange.Raw)
             expect(RelativeChange.Raw.fromRaw(change).val()).toEqual(change);
         });
-        it("percentage value -> RelativeChange", function () {
+        it("percentage value -> RelativeChange.Raw", function () {
             _testloop(function (t) {
                 expect(RelativeChange.Raw.fromPercentage(t.pctg).val()).toEqual(t.chng);
             });
         });
-        it("multiplier value -> RelativeChange", function () {
+        it("multiplier value -> RelativeChange.Raw", function () {
             _testloop(function (t) {
                 expect(RelativeChange.Raw.fromMultiplier(t.mltplr).val()).toEqual(t.chng);
             });
         });
-        it("RelativeChange -> RelativeChangePercentage", function () {
+        it("RelativeChange.Raw -> RelativeChange.Percentage", function () {
             _testloop(function (t) {
                 expect(RelativeChange.Raw.calculate(t.ini, t.fin).percentage().val()).toEqual(t.pctg);
             });
         });
-        it("RelativeChange -> RelativeChangeMultiplier", function () {
+        it("RelativeChange.Raw -> RelativeChange.Multiplier", function () {
             _testloop(function (t) {
                 expect(RelativeChange.Raw.calculate(t.ini, t.fin).multiplier().val()).toEqual(t.mltplr);
             });
@@ -60,31 +60,31 @@ describe("relativechange.js lib", function () {
         it("should exist in RelativeChange scope", function () {
             expect(RelativeChange.Percentage).toBeDefined();
         });
-        it("initial & final values -> RelativeChangePercentage", function () {
+        it("initial & final values -> RelativeChange.Percentage", function () {
             _testloop(function (t) {
                 expect(RelativeChange.Percentage.calculate(t.ini, t.fin).val()).toEqual(t.pctg);
             });
         });
-        it("percentage value -> RelativeChangePercentage", function () {
+        it("percentage value -> RelativeChange.Percentage", function () {
             var percentage = tests_data[0].percentage;
             expect(RelativeChange.Percentage.fromPercentage(percentage).val()).toEqual(percentage);
         });
-        it("raw change value -> RelativeChangePercentage", function () {
+        it("raw change value -> RelativeChange.Percentage", function () {
             _testloop(function (t) {
                 expect(RelativeChange.Percentage.fromRaw(t.chng).val()).toEqual(t.pctg);
             });
         });
-        it("multiplier value -> RelativeChangePercentage", function () {
+        it("multiplier value -> RelativeChange.Percentage", function () {
             _testloop(function (t) {
                 expect(RelativeChange.Percentage.fromMultiplier(t.mltplr).val()).toEqual(t.pctg);
             });
         });
-        it("RelativeChangePercentage -> RelativeChange", function () {
+        it("RelativeChange.Percentage -> RelativeChange.Raw", function () {
             _testloop(function (t) {
                 expect(RelativeChange.Percentage.calculate(t.ini, t.fin).raw().val()).toEqual(t.chng);
             });
         });
-        it("RelativeChangePercentage -> RelativeChangeMultiplier", function () {
+        it("RelativeChange.Percentage -> RelativeChange.Multiplier", function () {
             _testloop(function (t) {
                 expect(RelativeChange.Percentage.calculate(t.ini, t.fin).multiplier().val()).toEqual(t.mltplr);
             });
@@ -98,31 +98,31 @@ describe("relativechange.js lib", function () {
         it("should exist in RelativeChange scope", function () {
             expect(RelativeChange.Multiplier).toBeDefined();
         });
-        it("initial & final values -> RelativeChangeMultiplier", function () {
+        it("initial & final values -> RelativeChange.Multiplier", function () {
             _testloop(function (t) {
                 expect(RelativeChange.Multiplier.calculate(t.ini, t.fin).val()).toEqual(t.mltplr);
             });
         });
-        it("multiplier value -> RelativeChangeMultiplier", function () {
+        it("multiplier value -> RelativeChange.Multiplier", function () {
             var multiplier = tests_data[0].multiplier;
             expect(RelativeChange.Multiplier.fromMultiplier(multiplier).val()).toEqual(multiplier);
         });
-        it("raw change value -> RelativeChangeMultiplier", function () {
+        it("raw change value -> RelativeChange.Multiplier", function () {
             _testloop(function (t) {
                 expect(RelativeChange.Multiplier.fromRaw(t.chng).val()).toEqual(t.mltplr);
             });
         });
-        it("percentage value -> RelativeChangeMultiplier", function () {
+        it("percentage value -> RelativeChange.Multiplier", function () {
             _testloop(function (t) {
                 expect(RelativeChange.Multiplier.fromPercentage(t.pctg).val()).toEqual(t.mltplr);
             });
         });
-        it("RelativeChangeMultiplier -> RelativeChange", function () {
+        it("RelativeChange.Multiplier -> RelativeChange.Raw", function () {
             _testloop(function (t) {
                 expect(RelativeChange.Multiplier.calculate(t.ini, t.fin).raw().val()).toEqual(t.chng);
             });
         });
-        it("RelativeChangeMultiplier -> RelativeChangePercentage", function () {
+        it("RelativeChange.Multiplier -> RelativeChange.Percentage", function () {
             _testloop(function (t) {
                 expect(RelativeChange.Multiplier.calculate(t.ini, t.fin).percentage().val()).toEqual(t.pctg);
             });
