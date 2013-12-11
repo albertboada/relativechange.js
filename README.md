@@ -11,14 +11,17 @@ Javascript library for calculating relative quantity changes, such as:
 
 ### Example of Usage
 ```js
+var initial_quantity = 50,
+    final_quantity   = 200;
+    
 var relchange_instance = RelativeChange.Raw.calculate(initial_quantity, final_quantity);
 var relchange = relchange_instance.val(); // 3
 
 // Feeling like some convertions
-var relchangepercentage_instance = relchange_instance.percentage();
-var relchangepercentage = relchangepercentage_instance.val(); // 300 (+300%)
-var relchangemultiplier_instance = relchange_instance.multiplier();
-var relchange_multiplier = relchangemultiplier_instance.val(); // 4 (x4)
+var percentage_instance = relchange_instance.percentage();
+var percentage = relchangepercentage_instance.val(); // 300 (+300%)
+var multiplier_instance = relchange_instance.multiplier();
+var multiplier = multiplier_instance.val(); // 4 (x4)
 ```
 
 ### API
